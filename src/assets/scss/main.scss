@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* Import core bulmas core */
+/* Custom styling in this file*/
+@import "custom-variables";
+
+@import "~bulma/sass/utilities/_all";
+/* Import Bulma and Buefy styles */
+@import "~bulma";
+@import "~buefy/src/scss/buefy";

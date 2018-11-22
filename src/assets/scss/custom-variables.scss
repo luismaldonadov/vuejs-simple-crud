@@ -1,0 +1,12 @@
+$vuemain: hsl(153, 64%, 40%);
+$vuesecondary: hsl(178, 63%, 35%);
+$vuecomplementary: hsl(16, 87%, 58%);
+$heartred: hsl(0, 97%, 45%);
+
+$link: $vuemain;
+$link-hover: $vuecomplementary;
+
+// Import a Google font
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
+
+$family-sans-serif: 'Noto Sans TC', sans-serif;
