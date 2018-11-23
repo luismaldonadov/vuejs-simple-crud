@@ -21,14 +21,21 @@
     <div id="tools" class="content is-medium">
       <!-- Pass the DOM element which the mouse has the event
        this is a method within this component -->
-      <h1 @mouseover="mouseOver($event)">Tools used</h1>
+      <h1 @mouseover="mouseOver($event)"
+          @mousemove="mouseMove($event)">Tools used</h1>
         <ul>
-          <li>Vuex</li>
-          <li>Vue-router</li>
-          <li>GSAP for animations</li>
-          <li>Buefy</li>
-          <li>This will be a PWA</li>
-          <li>Fake data, real API endpoints used: <a href="https://reqres.in/">https://reqres.in/</a> and <a href="https://jsonplaceholder.typicode.com/">https://jsonplaceholder.typicode.com/</a></li>
+          <li @mouseover="mouseOver($event)"
+              @mousemove="mouseMove($event)">Vuex</li>
+          <li @mouseover="mouseOver($event)"
+              @mousemove="mouseMove($event)">Vue-router</li>
+          <li @mouseover="mouseOver($event)"
+              @mousemove="mouseMove($event)">GSAP for animations</li>
+          <li @mouseover="mouseOver($event)"
+              @mousemove="mouseMove($event)">Buefy</li>
+          <li @mouseover="mouseOver($event)"
+              @mousemove="mouseMove($event)">This will be a PWA</li>
+          <li @mouseover="mouseOver($event)"
+              @mousemove="mouseMove($event)">Fake data, real API endpoints used: <a href="https://reqres.in/">https://reqres.in/</a> and <a href="https://jsonplaceholder.typicode.com/">https://jsonplaceholder.typicode.com/</a></li>
           <li></li>
         </ul>
     </div>
@@ -37,28 +44,63 @@
 
 <script>
 import { TweenMax, TimelineMax } from 'gsap';
+import { mapState } from 'vuex';
 
 export default {
   name: 'home',
+  data() {
+    return {};
+  },
   components: {},
   methods: {
+    setActiveAnimationElement(domElement) {
+      this.$store.dispatch('mouseElement/activeElement', domElement.target);
+    },
+    mouseOver: function mouseOverElement(element) {
+      this.setActiveAnimationElement(element);
+      this.elementZoomAnimation();
+    },
+    mouseMove: function mouseMoveElement(element) {
+      this.setActiveAnimationElement(element);
+      this.elementZoomAnimation();
+    },
+    elementZoomAnimation() {
+      TweenMax.to(this.activeElement, 0.1, {
+        scaleX: 1.1,
+        scaleY: 1.1,
+        transformOrigin: `${this.activeElement.clientX}px
+                          ${this.activeElement.clientY}px`,
+      }, { onComplete: this.transitionOrAnimationCompleted });
+    },
+    cancelPreviousElementZoomAnimation() {
+      if (this.previousElement !== null || this.previousElement !== undefined) {
+        TweenMax.killTweensOf(this.previousElement, { scale: 1 });
+      }
+    },
+    /*
     transitionOrAnimationCompleted() {
       return true;
     },
     mouseOver: function mouseOverElement(domElement) {
-      console.log(`X:${domElement.clientX} Y: ${domElement.clientY}`);
-      TweenMax.to(domElement.target, 0.025, {
-        scale: 1.1,
-        transformOrigin: `${domElement.clientX}px ${domElement.clientY}px`,
-        translateZ: 0,
-      }, { onComplete: this.transitionOrAnimationCompleted });
+      // console.log(`X:${domElement.clientX} Y: ${domElement.clientY}`);
+
     },
-    /*
     leave: function leftElementAnimation(el, transitionCompleted) {
       // Call the callback function that sets the done state for animation
       // transitionOrAnimationCompleted();
     },
     */
+  },
+  computed: mapState({
+    // Map state data to local data
+    activeElement: state => state.mouseElement.activeElement,
+    previousElement: state => state.mouseElement.previousElement,
+  }),
+  watch: {
+    previousElement() {
+      console.log('Previous element has changed');
+      this.cancelPreviousElementZoomAnimation();
+    },
   },
   mounted() {
     const tl = new TimelineMax({
@@ -82,16 +124,7 @@ export default {
       ease: Power4.easeOut,
     });
   },
-  beforeDestroy() {
-    TweenMax.fromTo(this.$el, 1, {
-      autoAlpha: 1,
-    }, {
-      autoAlpha: 0,
-      /* eslint-disable-next-line */
-      ease: Power4.easeOut,
-      onComplete: this.transitionOrAnimationCompleted,
-    });
-  },
+
 };
 </script>
 
