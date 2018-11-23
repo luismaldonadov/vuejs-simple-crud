@@ -1,18 +1,20 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
-// import { SOME_MUTATION } from './mutation-types'
+import mouseElement from './modules/mouseElement';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-
-  },
-  mutations: {
-
-  },
-  actions: {
-
+  modules: {
+    mouseElement,
   },
 });
+
+/*
+ state: {
+  },
+  mutations: {
+  },
+  actions: {
+  },
+*/
