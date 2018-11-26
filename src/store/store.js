@@ -9,12 +9,3 @@ export default new Vuex.Store({
     mouseElement,
   },
 });
-
-/*
- state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-*/

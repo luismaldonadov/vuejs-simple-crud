@@ -26,7 +26,7 @@ const mutations = {
     state.activeElement = element;
   },
   /* Mutation to set the DOM element who has just lost the mouse, in order
-  to cancel any animation.
+  to restore the element to its original state.
   */
   PREVIOUS_ELEMENT(state) {
     state.previousElement = state.activeElement;

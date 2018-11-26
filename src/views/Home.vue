@@ -21,21 +21,21 @@
     <div id="tools" class="content is-medium">
       <!-- Pass the DOM element which the mouse has the event
        this is a method within this component -->
-      <h1 @mouseover="mouseOver($event)"
-          @mousemove="mouseMove($event)">Tools used</h1>
+      <h1 @mouseover="renderZoomElementAnimation($event)"
+          @mousemove="renderZoomElementAnimation($event)">Tools used</h1>
         <ul>
-          <li @mouseover="mouseOver($event)"
-              @mousemove="mouseMove($event)">Vuex</li>
-          <li @mouseover="mouseOver($event)"
-              @mousemove="mouseMove($event)">Vue-router</li>
-          <li @mouseover="mouseOver($event)"
-              @mousemove="mouseMove($event)">GSAP for animations</li>
-          <li @mouseover="mouseOver($event)"
-              @mousemove="mouseMove($event)">Buefy</li>
-          <li @mouseover="mouseOver($event)"
-              @mousemove="mouseMove($event)">This will be a PWA</li>
-          <li @mouseover="mouseOver($event)"
-              @mousemove="mouseMove($event)">Fake data, real API endpoints used: <a href="https://reqres.in/">https://reqres.in/</a> and <a href="https://jsonplaceholder.typicode.com/">https://jsonplaceholder.typicode.com/</a></li>
+          <li @mouseover="renderZoomElementAnimation($event)"
+              @mousemove="renderZoomElementAnimation($event)">Vuex</li>
+          <li @mouseover="renderZoomElementAnimation($event)"
+              @mousemove="renderZoomElementAnimation($event)">Vue-router</li>
+          <li @mouseover="renderZoomElementAnimation($event)"
+              @mousemove="renderZoomElementAnimation($event)">GSAP for animations</li>
+          <li @mouseover="renderZoomElementAnimation($event)"
+              @mousemove="renderZoomElementAnimation($event)">Buefy</li>
+          <li @mouseover="renderZoomElementAnimation($event)"
+              @mousemove="renderZoomElementAnimation($event)">This will be a PWA</li>
+          <li @mouseover="renderZoomElementAnimation($event)"
+              @mousemove="renderZoomElementAnimation($event)">Fake data, real API endpoints used: <a href="https://reqres.in/">https://reqres.in/</a> and <a href="https://jsonplaceholder.typicode.com/">https://jsonplaceholder.typicode.com/</a></li>
           <li></li>
         </ul>
     </div>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { TweenMax, TimelineMax } from 'gsap';
+import { TweenMax } from 'gsap';
 import { mapState } from 'vuex';
 
 export default {
@@ -56,15 +56,10 @@ export default {
     setActiveAnimationElement(domElement) {
       this.$store.dispatch('mouseElement/activeElement', domElement.target);
     },
-    mouseOver: function mouseOverElement(element) {
+    renderZoomElementAnimation(element) {
+      // Set the current active element on which the mouse is
       this.setActiveAnimationElement(element);
-      this.elementZoomAnimation();
-    },
-    mouseMove: function mouseMoveElement(element) {
-      this.setActiveAnimationElement(element);
-      this.elementZoomAnimation();
-    },
-    elementZoomAnimation() {
+      // Run the animation
       TweenMax.to(this.activeElement, 0.1, {
         scaleX: 1.1,
         scaleY: 1.1,
@@ -72,24 +67,12 @@ export default {
                           ${this.activeElement.clientY}px`,
       }, { onComplete: this.transitionOrAnimationCompleted });
     },
-    cancelPreviousElementZoomAnimation() {
+    renderOriginalElementState() {
+      // Set the element to its original state
       if (this.previousElement !== null || this.previousElement !== undefined) {
         TweenMax.killTweensOf(this.previousElement, { scale: 1 });
       }
     },
-    /*
-    transitionOrAnimationCompleted() {
-      return true;
-    },
-    mouseOver: function mouseOverElement(domElement) {
-      // console.log(`X:${domElement.clientX} Y: ${domElement.clientY}`);
-
-    },
-    leave: function leftElementAnimation(el, transitionCompleted) {
-      // Call the callback function that sets the done state for animation
-      // transitionOrAnimationCompleted();
-    },
-    */
   },
   computed: mapState({
     // Map state data to local data
@@ -99,32 +82,9 @@ export default {
   watch: {
     previousElement() {
       console.log('Previous element has changed');
-      this.cancelPreviousElementZoomAnimation();
+      this.renderOriginalElementState();
     },
   },
-  mounted() {
-    const tl = new TimelineMax({
-      onComplete: this.transitionOrAnimationCompleted,
-    });
-    tl.set(this.$el, {
-      x: -(window.innerWidth * 0.2),
-      scale: 0.9,
-      opacity: 0.05,
-      transformOrigin: '50% 50%',
-    });
-    tl.to(this.$el, 0.2, {
-      x: 0,
-      /* eslint-disable-next-line */
-      ease: Power4.easeOut,
-    });
-    tl.to(this.$el, 1, {
-      scale: 1,
-      opacity: 1,
-      /* eslint-disable-next-line */
-      ease: Power4.easeOut,
-    });
-  },
-
 };
 </script>
 
