@@ -1,15 +1,18 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <!-- My injected custom navigation bar -->
     <TheNavigationBar />
+
     <!-- Page transition implementation -->
     <transition
       @enter="enter"
-      @leave="leave"
-      :css="false">
+      @leave="leave">
       <!-- All the router views get injected here -->
-      <router-view/>
+      <router-view />
     </transition>
+    <!--
+    <TheFooter class="footer" />
+    -->
   </div>
 </template>
 
@@ -17,13 +20,10 @@
 // @ is an alias to /src
 import { TimelineMax } from 'gsap';
 import TheNavigationBar from '@/components/TheNavigationBar.vue';
-
+// import TheFooter  from '@/components/TheFooter.vue';
 export default {
   data() {
-    return {
-      pageTransitionStarted: false,
-      pageTransitionComplete: false,
-    };
+    return {};
   },
   components: {
     TheNavigationBar,
@@ -34,44 +34,32 @@ export default {
       const tl = new TimelineMax({
         onComplete: done,
       });
-      tl.set(element, {
-        x: -(window.innerWidth * 0.2),
-        scale: 0.9,
-        opacity: 0.05,
-        transformOrigin: '50% 50%',
-      });
-      tl.to(element, 0.2, {
-        x: 0,
-        /* eslint-disable-next-line */
-        ease: Power4.easeOut,
-      });
-      tl.to(element, 1, {
-        scale: 1,
-        opacity: 1,
-        /* eslint-disable-next-line */
-        ease: Power4.easeOut,
-      });
+      tl.fromTo(element, 0.5,
+        {
+          x: -200,
+          autoAlpha: 0,
+        },
+        {
+          x: 0,
+          autoAlpha: 1,
+        });
     },
     leave(element, done) {
       const tl = new TimelineMax({
         onComplete: done,
       });
-      tl.set(element, {
-        scale: 0.9,
-        opacity: 0.1,
-        transformOrigin: '50% 50%',
-      });
-      tl.to(element, 0.5, {
-        x: (window.innerWidth * 1.1),
-        /* eslint-disable-next-line */
-        ease: Power4.easeOut,
-      });
+      tl.fromTo(element, 0.5,
+        { autoAlpha: 1 },
+        { autoAlpha: 0 });
     },
   },
 };
 </script>
 
 <style lang="scss">
+.content {
+}
+.header {
+}
 // Import scss file that has Bulma reference and custom CSS
-@import "./assets/scss/main.scss";
 </style>

@@ -1,9 +1,103 @@
 @charset "utf-8";
-/* Import core bulmas core */
-/* Custom styling in this file*/
-@import "custom-variables";
 
-@import "~bulma/sass/utilities/_all";
-/* Import Bulma and Buefy styles */
-@import "~bulma";
-@import "~buefy/src/scss/buefy";
+/* Custom styling in this file*/
+@import "theme-variables";
+
+// @import '../../../node_modules/reset-css/sass/reset';
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+html,body {
+  width:100%;
+  height:100%;
+  margin:0;
+}
+
+.footer {
+  grid-column: 1;
+  grid-row: 6 / 7;
+}
+.container {
+  display: grid;
+  grid-template-columns: $theme-grid-columns-desktop;
+  grid-template-rows: $theme-grid-rows-desktop;
+  font-family: $theme-font;
+  font-size: $font-default-size;
+  // Shorthand for align-items and justify items.
+  // place-items: center center;
+  // Shorthand for align-content and justify-content
+  // place-content
+}
+
+.material-design-icon.icon-2 {
+  height: 2em;
+  width: 2em;
+  color: $main-color;
+  :hover {
+    color: $complementary-color;
+  }
+}
+
+.material-design-icon.icon-2 > .material-design-icon__svg {
+    height: 2em;
+    width: 2em;
+}
+
+.material-design-icon.icon-2i {
+  height: 2em;
+  width: 2em;
+  color: $main-color;
+  :hover {
+    color: $complementary-color;
+  }
+}
+
+.material-design-icon.icon-2i > .material-design-icon__svg {
+    height: 2em;
+    width: 2em;
+}
+
+.material-design-icon.icon-3-i {
+  height: 3em;
+  width: 3em;
+  color: white;
+  :hover {
+    color: $complementary-color;
+  }
+}
+.material-design-icon.icon-3-i > .material-design-icon__svg {
+    height: 3em;
+    width: 3em;
+}
+
+.material-design-icon.icon-3 {
+  height: 3em;
+  width: 3em;
+  color: $main-color;
+  :hover {
+    color: $complementary-color;
+  }
+}
+.material-design-icon.icon-3 > .material-design-icon__svg {
+    height: 3em;
+    width: 3em;
+}
+h1 {
+  font-size: $font-h1-size;
+}
+
+p {
+  font-size: $font-p-size;
+}
+
+li {
+  font-size: $font-li-size;
+}

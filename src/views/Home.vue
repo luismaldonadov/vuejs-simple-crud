@@ -1,11 +1,10 @@
 <template>
-  <div id="home" class="container is-fluid">
-    <div class="columns">
-      <div class="column is-3">
-        <img class="vue-logo" alt="Vue logo" src="../assets/svg/vuejs_logo.svg">
+  <div class="home">
+    <div class="home-body">
+      <div class="home-body-heading-logo">
+        <img src='../assets/svg/vuejs_logo.svg' alt="altText"/>
       </div>
-      <div class="column is-8 is-offset-1 has-vertically-aligned-content">
-        <div class="content is-large">
+      <div class="home-body-heading-content">
           <h1>
             Vue.js simple CRUD app
           </h1>
@@ -13,15 +12,15 @@
             This a small project that i made in order to learn
             to use Vue.js properly.
             Basic create, read, update and delete operations
-            from real REST API endpoints are included.
+            from real REST API endpoints are included
           </p>
-        </div>
       </div>
-    </div>
-    <div id="tools" class="content is-medium">
+
+    <div class="home-body-content-tools">
       <!-- Pass the DOM element which the mouse has the event
        this is a method within this component -->
-      <h1 @mouseover="renderZoomElementAnimation($event)"
+      <h1 class="home-body-content-tools-heading"
+          @mouseover="renderZoomElementAnimation($event)"
           @mousemove="renderZoomElementAnimation($event)">Tools used</h1>
         <ul>
           <li @mouseover="renderZoomElementAnimation($event)"
@@ -38,6 +37,8 @@
               @mousemove="renderZoomElementAnimation($event)">Fake data, real API endpoints used: <a href="https://reqres.in/">https://reqres.in/</a> and <a href="https://jsonplaceholder.typicode.com/">https://jsonplaceholder.typicode.com/</a></li>
           <li></li>
         </ul>
+    </div>
+
     </div>
   </div>
 </template>
@@ -89,9 +90,32 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.column.is-8.is-offset-1.has-vertically-aligned-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.home {
+}
+.home-body {
+  // Nested grid
+  display: grid;
+  grid-template-columns: '1fr 1fr 1fr 1fr';
+  grid-template-rows: 24rem;
+  grid-template-areas:
+    "logo . heading heading"
+    "toolsHeading toolsHeading toolsHeading toolsHeading"
+    "toolsContent toolsContent toolsContent toolsContent";
+  padding: 0.5em;
+}
+.home-body-heading-logo {
+  grid-area: logo;
+}
+.home-body-heading-content {
+  grid-area: heading;
+  place-self: center start;
+}
+.home-body-content-tools-heading {
+  grid-area: toolsHeading;
+  text-align: center;
+}
+.home-body-content-tools {
+  grid-area: toolsContent;
+  padding: 0.5rem;
 }
 </style>

@@ -20,6 +20,7 @@ const actions = {
   },
 };
 
+
 const mutations = {
   // Mutation to set the active DOM element who has the mouse on
   ACTIVE_ELEMENT(state, element) {

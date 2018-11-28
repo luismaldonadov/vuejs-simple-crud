@@ -1,0 +1,36 @@
+$main-color: hsl(153, 64%, 40%);
+$secondary-color: hsl(178, 63%, 35%);
+$complementary-color: hsl(16, 87%, 58%);
+
+$heartred: hsl(0, 97%, 45%);
+
+$link: $main-color;
+$link-hover: $complementary-color;
+
+// Grid sizes
+
+$theme-grid-columns-desktop: auto;
+$theme-grid-rows-desktop: auto;
+$theme-grid-fullwidth: 1;
+$theme-grid-body: 2 / 3;
+
+// 0.9em to match font default size
+
+
+// Icon sizes
+
+// Breakpoints
+
+//Font properties
+  // Import a Google font
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
+$theme-font: 'Noto Sans TC', sans-serif;
+$font-default-size: 17px;
+$font-h1-size: 2.8em;
+$font-h2-size: 2.4em;
+$font-h3-size: 1.7em;
+$font-li-size: 1.3em;
+$font-p-size: 1.3em;
+$font-nav-icons: 1.1em;
+  // header 1,2,3
+  //
