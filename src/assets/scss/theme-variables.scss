@@ -14,15 +14,13 @@ $theme-grid-rows-desktop: auto;
 $theme-grid-fullwidth: 1;
 $theme-grid-body: 2 / 3;
 
-// 0.9em to match font default size
-
-
 // Icon sizes
 
 // Breakpoints
 
 //Font properties
-  // Import a Google font
+
+// Import a Google font
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
 $theme-font: 'Noto Sans TC', sans-serif;
 $font-default-size: 17px;

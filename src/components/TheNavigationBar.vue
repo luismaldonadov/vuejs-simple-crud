@@ -23,9 +23,9 @@
 
 <script>
 // Material Design Icons, from a vue crafted npm package.
-import Heart from 'vue-material-design-icons/Heart.vue';
-import HomeCircle from 'vue-material-design-icons/HomeCircle.vue';
-import Database from 'vue-material-design-icons/Database.vue';
+import Heart from 'icons/Heart.vue';
+import HomeCircle from 'icons/HomeCircle.vue';
+import Database from 'icons/Database.vue';
 
 export default {
   name: 'TheNavigationBar',

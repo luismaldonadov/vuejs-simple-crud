@@ -1,5 +1,16 @@
+const path = require('path');
 // By default set to open the visual analyzer to false.
 module.exports = {
+  configureWebpack: {
+    resolve: {
+      alias: {
+        icons: path.resolve(__dirname, 'node_modules/vue-material-design-icons'),
+      },
+      extensions: [
+        '.vue',
+      ],
+    },
+  },
   css: {
     loaderOptions: {
       sass: {
