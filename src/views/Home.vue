@@ -1,50 +1,34 @@
 <template>
-  <div class="home">
-    <div class="home-body">
-      <div class="home-body-heading-logo">
-        <img src='../assets/svg/vuejs_logo.svg' alt="altText"/>
-      </div>
-      <div class="home-body-heading-content">
-          <h1>
-            Vue.js simple CRUD app
-          </h1>
-          <p>
-            This a small project that i made in order to learn
-            to use Vue.js properly.
-            Basic create, read, update and delete operations
-            from real REST API endpoints are included
-          </p>
-      </div>
-
-    <div class="home-body-content-tools">
+  <div class="home-body">
+    <div class="home-body-content">
+      <img src='../assets/svg/vuejs_logo.svg' alt="altText"/>
       <!-- Pass the DOM element which the mouse has the event
-       this is a method within this component -->
-      <h1 class="home-body-content-tools-heading"
+      this is a method within this component -->
+      <h2
           @mouseover="renderZoomElementAnimation($event)"
-          @mousemove="renderZoomElementAnimation($event)">Tools used</h1>
+          @mousemove="renderZoomElementAnimation($event)">Tools used</h2>
         <ul>
           <li @mouseover="renderZoomElementAnimation($event)"
               @mousemove="renderZoomElementAnimation($event)">Vuex</li>
           <li @mouseover="renderZoomElementAnimation($event)"
               @mousemove="renderZoomElementAnimation($event)">Vue-router</li>
           <li @mouseover="renderZoomElementAnimation($event)"
-              @mousemove="renderZoomElementAnimation($event)">GSAP for animations</li>
-          <li @mouseover="renderZoomElementAnimation($event)"
-              @mousemove="renderZoomElementAnimation($event)">Buefy</li>
-          <li @mouseover="renderZoomElementAnimation($event)"
               @mousemove="renderZoomElementAnimation($event)">This will be a PWA</li>
           <li @mouseover="renderZoomElementAnimation($event)"
               @mousemove="renderZoomElementAnimation($event)">Fake data, real API endpoints used: <a href="https://reqres.in/">https://reqres.in/</a> and <a href="https://jsonplaceholder.typicode.com/">https://jsonplaceholder.typicode.com/</a></li>
-          <li></li>
+          <li>CSS Animations for some elements</li>
         </ul>
+        <p>
+          This a small project that i made in order to learn
+          to use Vue.js properly.
+          Basic create, read, update and delete operations
+          from real REST API endpoints are included
+      </p>
     </div>
-
-    </div>
-  </div>
+</div>
 </template>
 
 <script>
-import { TweenMax } from 'gsap';
 import { mapState } from 'vuex';
 
 export default {
@@ -61,17 +45,11 @@ export default {
       // Set the current active element on which the mouse is
       this.setActiveAnimationElement(element);
       // Run the animation
-      TweenMax.to(this.activeElement, 0.1, {
-        scaleX: 1.1,
-        scaleY: 1.1,
-        transformOrigin: `${this.activeElement.clientX}px
-                          ${this.activeElement.clientY}px`,
-      }, { onComplete: this.transitionOrAnimationCompleted });
     },
     renderOriginalElementState() {
       // Set the element to its original state
       if (this.previousElement !== null || this.previousElement !== undefined) {
-        TweenMax.killTweensOf(this.previousElement, { scale: 1 });
+        // TODO
       }
     },
   },
@@ -90,32 +68,33 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.home {
-}
 .home-body {
+  // Values to set here as a child of the parent grid
+  margin-top: 25px;
+  width: $navbar-width-desktop;
+  height: $body-container-height;
+  place-self: center center;
   // Nested grid
-  display: grid;
-  grid-template-columns: '1fr 1fr 1fr 1fr';
-  grid-template-rows: 24rem;
-  grid-template-areas:
-    "logo . heading heading"
-    "toolsHeading toolsHeading toolsHeading toolsHeading"
-    "toolsContent toolsContent toolsContent toolsContent";
-  padding: 0.5em;
+  display:grid;
 }
-.home-body-heading-logo {
-  grid-area: logo;
-}
-.home-body-heading-content {
-  grid-area: heading;
-  place-self: center start;
-}
-.home-body-content-tools-heading {
-  grid-area: toolsHeading;
-  text-align: center;
-}
-.home-body-content-tools {
-  grid-area: toolsContent;
-  padding: 0.5rem;
+
+.home-body-content {
+  place-self : center center;
+
+  h2 {
+    text-align: center;
+  }
+  img {
+    top: 0px;
+    float: left;
+    shape-outside: circle(50%);
+    border-radius: 50%;
+    margin-right: 3em;
+    box-shadow: 0px 5px 5px 5px #ccc;
+  }
+
+  ul,p {
+    width: 65vw;
+  }
 }
 </style>

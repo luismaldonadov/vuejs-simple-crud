@@ -7,7 +7,7 @@
 <script>
 
 export default {
-  name: 'DataVisualization',
+  name: 'Search',
 };
 </script>
 

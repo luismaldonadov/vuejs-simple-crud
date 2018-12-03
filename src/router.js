@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import DataVisualization from './views/DataVisualization.vue';
+import Search from './views/Search.vue';
 
 Vue.use(Router);
 
@@ -15,9 +15,9 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/data-visualization',
-      name: 'data-visualization',
-      component: DataVisualization,
+      path: '/search',
+      name: 'search',
+      component: Search,
     },
   ],
 });

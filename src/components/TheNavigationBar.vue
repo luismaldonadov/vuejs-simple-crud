@@ -3,87 +3,112 @@
     <div class="navbar-content">
       <div class="navbar-headline">
         <strong>It's easy to
-          <heart /> Vue.js !
+          <v-icon name="heart"/> Vue.js !
         </strong>
       </div>
 
       <ul class="navbar-icon-group">
         <router-link to="/" tag="li">
-          <home-circle class="icon-2-i" />
-          <li>Home</li>
+          <v-icon name="home"/>
+          <div class="home-text">Home</div>
         </router-link>
-        <router-link to="/data-visualization" tag="li">
-          <database class="icon-2-i" />
-          <li>Read Data</li>
+        <router-link to="/search" tag="li">
+          <v-icon name="search"/>
+          <div class="search-text">Search</div>
+        </router-link>
+        <router-link to="/edit" tag="li">
+          <v-icon name="edit"/>
+          <div class="edit-text">Edit</div>
         </router-link>
       </ul>
+
     </div>
   </div>
 </template>
 
 <script>
-// Material Design Icons, from a vue crafted npm package.
-import Heart from 'icons/Heart.vue';
-import HomeCircle from 'icons/HomeCircle.vue';
-import Database from 'icons/Database.vue';
+import 'vue-awesome/icons/heart';
+import 'vue-awesome/icons/home';
+import 'vue-awesome/icons/edit';
+import 'vue-awesome/icons/search';
 
 export default {
   name: 'TheNavigationBar',
-  components: {
-    heart: Heart,
-    'home-circle': HomeCircle,
-    database: Database,
-  },
+  components: {},
 };
 </script>
-
-<style scoped lang="scss">
+<style lang="scss">
 .navbar {
+  // We need to place this as a child for the root grid
+  width: $navbar-width-desktop;
+  place-self: center center;
   z-index: 1000;
   background-color: $main-color;
   grid-column: 1;
   grid-row: 1 ;
+  // Sticky Header
+  top: 0;
+  margin-top: 0.1vh;
+  position: sticky;
+  // Shadow for the navbar
+  box-shadow: 0px 5px 7px 5px #ccc;
 }
+</style>
+
+<style scoped lang="scss">
+
 .navbar-content {
-  display: grid;
-  grid-template-columns: '1fr auto';
-  grid-template-rows: auto;
-  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navbar-headline {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-  min-width: 60rem;
-  place-self: center stretch;
-}
-.navbar-headline strong {
-  color: white;
-  font-size: $font-p-size;
+  margin-left: 24px;
+  min-width: 48rem;
+
+  strong {
+    color: white;
+    font-size: 2em;
+    font-family: $theme-font-display;
+
+    .fa-icon {
+      height: 32px;
+      width: 32px;
+    }
+  }
 }
 
 .navbar-icon-group {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-  min-width: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 6rem;
   max-width: 24rem;
-  margin: auto;
-  place-self: center end;
-}
 
-.navbar-icon-group li {
-  display: inline-block;
-  list-style-type: none;
-  color: white;
-  padding: 0.3rem;
-  font-size: $font-nav-icons;
-}
-.navbar-icon-group li:hover,
-.navbar-icon-group.router-link-active,
-.navbar-icon-group.router-link-exact-active {
-  cursor: pointer;
-  :hover {
-    color: $complementary-color;
+  li {
+    margin: 0px;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    min-height: 56px;
+    min-width: 100px;
+    list-style-type: none;
+    color: white;
+
+    .fa-icon {
+      height: 32px;
+      width: 32px;
+    }
+    div {
+      display: none;
+    }
+
+      :hover {
+        cursor: pointer;
+        color: $complementary-color;
+      }
   }
 }
+
 </style>

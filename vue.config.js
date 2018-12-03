@@ -1,6 +1,10 @@
 const path = require('path');
 // By default set to open the visual analyzer to false.
 module.exports = {
+  transpileDependencies: [
+    /* eslint-disable-next-line */
+    /\bvue-awesome\b/
+  ],
   configureWebpack: {
     resolve: {
       alias: {

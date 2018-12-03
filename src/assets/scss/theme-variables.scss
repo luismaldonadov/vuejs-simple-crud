@@ -7,12 +7,22 @@ $heartred: hsl(0, 97%, 45%);
 $link: $main-color;
 $link-hover: $complementary-color;
 
+// Root grid column sizes
+$navbar-width-desktop: 90vw;
+$navbar-width-mobile: 100vw;
+
+// Root grid row sizes
+$navbar-height: 20vh;
+$body-container-height: 70vh;
+$footer-container-heihgt: 10vh;
+
 // Grid sizes
 
-$theme-grid-columns-desktop: auto;
-$theme-grid-rows-desktop: auto;
-$theme-grid-fullwidth: 1;
-$theme-grid-body: 2 / 3;
+$container-grid-columns-desktop: auto;
+$container-grid-rows-desktop: 
+  $navbar-height 
+  $body-container-height 
+  $footer-container-heihgt;
 
 // Icon sizes
 
@@ -21,14 +31,14 @@ $theme-grid-body: 2 / 3;
 //Font properties
 
 // Import a Google font
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
-$theme-font: 'Noto Sans TC', sans-serif;
-$font-default-size: 17px;
-$font-h1-size: 2.8em;
-$font-h2-size: 2.4em;
+@import url('https://fonts.googleapis.com/css?family=Lora|Noto+Sans|Exo');
+$theme-font-display: 'Exo', sans-serif;
+$theme-font-sub: 'Lora', serif;
+$theme-font: 'Noto Sans', sans-serif;
+$font-default-size: 18px;
+$font-h1-size: 3em;
+$font-h2-size: 2.5em;
 $font-h3-size: 1.7em;
-$font-li-size: 1.3em;
-$font-p-size: 1.3em;
 $font-nav-icons: 1.1em;
   // header 1,2,3
   //

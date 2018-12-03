@@ -27,8 +27,8 @@ html,body {
 }
 .container {
   display: grid;
-  grid-template-columns: $theme-grid-columns-desktop;
-  grid-template-rows: $theme-grid-rows-desktop;
+  grid-template-columns: $container-grid-columns-desktop;
+  grid-template-rows: $container-grid-rows-desktop;
   font-family: $theme-font;
   font-size: $font-default-size;
   // Shorthand for align-items and justify items.
@@ -37,67 +37,20 @@ html,body {
   // place-content
 }
 
-.material-design-icon.icon-2 {
-  height: 2em;
-  width: 2em;
-  color: $main-color;
-  :hover {
-    color: $complementary-color;
-  }
-}
+$icon-sizes: (
+    1: 12px,
+    2: 18px,
+    3: 24px,
+    4: 36px,
+    5: 48px,
+);
 
-.material-design-icon.icon-2 > .material-design-icon__svg {
-    height: 2em;
-    width: 2em;
-}
-
-.material-design-icon.icon-2i {
-  height: 2em;
-  width: 2em;
-  color: $main-color;
-  :hover {
-    color: $complementary-color;
-  }
-}
-
-.material-design-icon.icon-2i > .material-design-icon__svg {
-    height: 2em;
-    width: 2em;
-}
-
-.material-design-icon.icon-3-i {
-  height: 3em;
-  width: 3em;
-  color: white;
-  :hover {
-    color: $complementary-color;
-  }
-}
-.material-design-icon.icon-3-i > .material-design-icon__svg {
-    height: 3em;
-    width: 3em;
-}
-
-.material-design-icon.icon-3 {
-  height: 3em;
-  width: 3em;
-  color: $main-color;
-  :hover {
-    color: $complementary-color;
-  }
-}
-.material-design-icon.icon-3 > .material-design-icon__svg {
-    height: 3em;
-    width: 3em;
-}
 h1 {
   font-size: $font-h1-size;
+  font-family: $theme-font-display;
 }
-
-p {
-  font-size: $font-p-size;
-}
-
-li {
-  font-size: $font-li-size;
+h2 {
+  font-size: $font-h2-size;
+  font-family: $theme-font-sub;
+  font-weight: 900;
 }
