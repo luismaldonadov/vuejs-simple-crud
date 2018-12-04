@@ -4,18 +4,12 @@
       <img src='../assets/svg/vuejs_logo.svg' alt="altText"/>
       <!-- Pass the DOM element which the mouse has the event
       this is a method within this component -->
-      <h2
-          @mouseover="renderZoomElementAnimation($event)"
-          @mousemove="renderZoomElementAnimation($event)">Tools used</h2>
+      <h2>Tools used</h2>
         <ul>
-          <li @mouseover="renderZoomElementAnimation($event)"
-              @mousemove="renderZoomElementAnimation($event)">Vuex</li>
-          <li @mouseover="renderZoomElementAnimation($event)"
-              @mousemove="renderZoomElementAnimation($event)">Vue-router</li>
-          <li @mouseover="renderZoomElementAnimation($event)"
-              @mousemove="renderZoomElementAnimation($event)">This will be a PWA</li>
-          <li @mouseover="renderZoomElementAnimation($event)"
-              @mousemove="renderZoomElementAnimation($event)">Fake data, real API endpoints used: <a href="https://reqres.in/">https://reqres.in/</a> and <a href="https://jsonplaceholder.typicode.com/">https://jsonplaceholder.typicode.com/</a></li>
+          <li>Vuex</li>
+          <li>Vue-router</li>
+          <li>This will be a PWA</li>
+          <li>Fake data, real API endpoint used: <a href="https://jsonplaceholder.typicode.com/">https://jsonplaceholder.typicode.com/</a></li>
           <li>CSS Animations for some elements</li>
         </ul>
         <p>
@@ -29,41 +23,12 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-
 export default {
   name: 'home',
   data() {
     return {};
   },
   components: {},
-  methods: {
-    setActiveAnimationElement(domElement) {
-      this.$store.dispatch('mouseElement/activeElement', domElement.target);
-    },
-    renderZoomElementAnimation(element) {
-      // Set the current active element on which the mouse is
-      this.setActiveAnimationElement(element);
-      // Run the animation
-    },
-    renderOriginalElementState() {
-      // Set the element to its original state
-      if (this.previousElement !== null || this.previousElement !== undefined) {
-        // TODO
-      }
-    },
-  },
-  computed: mapState({
-    // Map state data to local data
-    activeElement: state => state.mouseElement.activeElement,
-    previousElement: state => state.mouseElement.previousElement,
-  }),
-  watch: {
-    previousElement() {
-      console.log('Previous element has changed');
-      this.renderOriginalElementState();
-    },
-  },
 };
 </script>
 
@@ -87,10 +52,7 @@ export default {
   img {
     top: 0px;
     float: left;
-    shape-outside: circle(50%);
-    border-radius: 50%;
     margin-right: 3em;
-    box-shadow: 0px 5px 5px 5px #ccc;
   }
 
   ul,p {

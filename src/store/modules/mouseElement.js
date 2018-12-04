@@ -1,7 +1,6 @@
 const state = {
   activeElement: null,
   previousElement: null,
-  finishedZoomAnimation: false,
 };
 
 const getters = {

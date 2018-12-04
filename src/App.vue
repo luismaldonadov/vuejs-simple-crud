@@ -3,9 +3,7 @@
     <!-- My injected custom navigation bar -->
     <TheNavigationBar />
     <!-- Page transition implementation -->
-    <transition
-      @enter="enter"
-      @leave="leave">
+    <transition>
       <!-- All the router views get injected here -->
       <router-view />
     </transition>
@@ -18,7 +16,6 @@
 <script>
 // @ is an alias to /src
 import TheNavigationBar from '@/components/TheNavigationBar.vue';
-// import TheFooter  from '@/components/TheFooter.vue';
 export default {
   data() {
     return {};
