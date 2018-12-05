@@ -6,6 +6,7 @@ The basic idea from this project was (but not limited to) the basic understandin
 * [GSAP](https://greensock.com/) for animations
 * [Material design icons](https://gitlab.com/robcresswell/vue-material-design-icons)
 * Fake data, real API endpoints used: [reqres](https://reqres.in/)  and [jsonplaceholder](https://jsonplaceholder.typicode.com/)
+* CSS basic animations
 ## Currently working on
 * Animation state management for home route DOM elements
 ## Roadmap
