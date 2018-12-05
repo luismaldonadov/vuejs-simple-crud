@@ -1,7 +1,7 @@
 <template>
   <div class="data-container">
-    <p>Nonsense text</p>
-    <DataTable />
+    <!-- Pass the props to the component DataTable -->
+    <DataTable :data="users" :columns="columns" />
   </div>
 </template>
 
@@ -14,13 +14,17 @@ export default {
   components: {
     DataTable,
   },
+  mounted() {
+  },
   created() {
     this.$store.dispatch('Users/fetchUsers');
   },
   computed: mapState({
     users: state => state.Users.all,
+    columns: state => state.Users.tableColumns,
   }),
-  methods: {},
+  methods: {
+  },
 };
 </script>
 
