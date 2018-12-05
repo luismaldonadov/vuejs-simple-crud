@@ -8,7 +8,7 @@ The basic idea from this project was (but not limited to) the basic understandin
 * Fake data, real API endpoints used: [reqres](https://reqres.in/)  and [jsonplaceholder](https://jsonplaceholder.typicode.com/)
 * CSS basic animations
 ## Currently working on
-* Animation state management for home route DOM elements
+* Universal datatable vue component, will be ported as a npm pacakge later.
 ## Roadmap
 * API data visualization component
 * API data edition component
