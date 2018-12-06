@@ -14,8 +14,6 @@ export default {
   components: {
     DataTable,
   },
-  mounted() {
-  },
   created() {
     this.$store.dispatch('Users/fetchUsers');
   },
@@ -28,8 +26,18 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss">
 .data-container {
-  place-self: center center;
+  width: $navbar-width-desktop;
+  justify-self: center;
+  grid-column: 1;
+  display: grid;
 }
+
+.row-buttons {
+}
+</style>
+
+<style lang="scss" scoped>
+
 </style>

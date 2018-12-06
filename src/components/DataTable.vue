@@ -1,10 +1,11 @@
 <template>
     <table>
-      <thead>
+      <thead id="table-header">
         <tr>
           <th v-for="(columnName, index) in columns" :key="index">
             {{ columnName | normalizeColumnName }}
           </th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -12,6 +13,14 @@
           <td v-for="(columnName ,index) in columns" :key="index">
             {{ rowItem[columnName] }}
           </td>
+          <div class="row-buttons">
+            <span @click="editItem(rowItem)">
+              <v-icon  class="edit" name="edit"></v-icon>
+            </span>
+            <span @click="deleteItem(rowItem)">
+              <v-icon  class="delete" name="trash-alt"></v-icon>
+            </span>
+          </div>
         </tr>
       </tbody>
       <tfoot></tfoot>
@@ -19,12 +28,26 @@
 </template>
 
 <script>
+import 'vue-awesome/icons/trash-alt';
+import 'vue-awesome/icons/edit';
+import 'vue-awesome/icons/search';
+import 'vue-awesome/icons/check-circle';
+import 'vue-awesome/icons/save';
+
 export default {
   name: 'DataTable',
   props: {
     data: Array,
     columns: Array,
     filter: String,
+  },
+  methods: {
+    editItem(rowItem) {
+      // TODO modal edit
+    },
+    deleteItem(rowItem) {
+      // TODO modal delete
+    },
   },
   filters: {
     normalizeColumnName: function normalizeColumnName(columnName) {
@@ -38,6 +61,52 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+table {
+  margin-top: 15px;
+  position: relative;
+}
+
+
+thead {
+  top: 100px;
+  position: sticky;
+  font-size: 24px;
+  background-color: #ccc;
+ tr {
+   th {
+     text-align: left;
+     padding: 15px;
+    }
+ }
+}
+tbody {
+  tr {
+    td {
+      padding: 5px;
+    }
+    .row-buttons {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      color: $main-color;
+
+      .edit.fa-icon {
+        margin-right: 15px;
+      }
+
+      .edit.fa-icon,
+      .delete.fa-icon {
+        display: table-cell;
+        height: 24px;
+        width: 24px;
+        vertical-align: middle;
+        :hover {
+          color: $complementary-color;
+        }
+      }
+     }
+  }
+}
 
 </style>
