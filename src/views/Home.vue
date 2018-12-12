@@ -34,13 +34,14 @@ export default {
 
 <style scoped lang="scss">
 .home-body {
+  grid-area: bodyContainer;
   // Values to set here as a child of the parent grid
   margin-top: 25px;
-  width: $navbar-width-desktop;
-  height: $body-container-height;
-  place-self: center center;
+   // width: $navbar-width-desktop;
+  // height: $body-container-height;
+  // place-self: center center;
   // Nested grid
-  display:grid;
+  // display:grid;
 }
 
 .home-body-content {

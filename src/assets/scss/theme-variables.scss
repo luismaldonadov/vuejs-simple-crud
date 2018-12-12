@@ -12,17 +12,16 @@ $navbar-width-desktop: 90vw;
 $navbar-width-mobile: 100vw;
 
 // Root grid row sizes
-$navbar-height: 20vh;
-$body-container-height: 70vh;
-$footer-container-heihgt: 10vh;
+$navbar-height-desktop: 6rem;
+$footer-container-heigth: 6rem;
 
 // Grid sizes
 
-$container-grid-columns-desktop: auto;
+$container-grid-columns-desktop: 1fr;
 $container-grid-rows-desktop: 
-  $navbar-height 
-  $body-container-height 
-  $footer-container-heihgt;
+  "navBarContainer"
+  "bodyContainer"
+  "footerContainer";
 
 // Icon sizes
 

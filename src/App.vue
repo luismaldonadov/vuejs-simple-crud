@@ -3,7 +3,7 @@
     <!-- My injected custom navigation bar -->
     <TheNavigationBar />
     <!-- Page transition implementation -->
-    <transition>
+    <transition name="switch">
       <!-- All the router views get injected here -->
       <router-view />
     </transition>
@@ -16,6 +16,7 @@
 <script>
 // @ is an alias to /src
 import TheNavigationBar from '@/components/TheNavigationBar.vue';
+
 export default {
   data() {
     return {};
@@ -34,8 +35,12 @@ export default {
 </script>
 
 <style lang="scss">
-.content {
+.switch-enter-active, .switch-leave-active {
+  transition: opacity 0.5s;
 }
-.header {
+
+.switch-enter, .switch-leave-to {
+  opacity: 0;
 }
+
 </style>

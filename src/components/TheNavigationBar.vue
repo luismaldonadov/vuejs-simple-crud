@@ -39,16 +39,18 @@ export default {
 </script>
 <style lang="scss">
 .navbar {
+  // Area where component belongs in main layuout
+  grid-area: navBarContainer;
   // We need to place this as a child for the root grid
-  width: $navbar-width-desktop;
-  place-self: center center;
+  min-width: $navbar-width-desktop;
+  height: $navbar-height-desktop;
+  place-self: stretch center;
   z-index: 1000;
   background-color: $main-color;
-  grid-column: 1;
-  grid-row: 1 ;
   // Sticky Header
   top: 0;
-  margin-top: 0.1vh;
+  margin-top: 0px;
+  padding-top: 0px;
   position: sticky;
   // Shadow for the navbar
   box-shadow: 0px 5px 7px 5px #ccc;

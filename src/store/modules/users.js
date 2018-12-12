@@ -8,7 +8,7 @@ const getters = {
 };
 
 const actions = {
-  fetchUsers({ commit }) {
+  fetchUsers({ commit, dispatch }) {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => {
         if (response.status === 200) {
@@ -24,8 +24,13 @@ const actions = {
           email: user.email,
           phone: user.phone,
           zipcode: user.address.zipcode,
-        }));
+        }
+        ));
         commit('SET_ALL_USERS', condensedUserData);
+        // Dispatch 2 actions to the tables state management. Set column headers
+        // and data for the table.
+        dispatch('Tables/selectedTableColumns', state.tableColumns, { root: true });
+        dispatch('Tables/selectedTable', state.all, { root: true });
         // Pass through error from rejected promise
       }).catch(error => console.error(error));
   },

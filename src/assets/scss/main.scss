@@ -22,13 +22,17 @@ html,body {
 }
 
 .footer {
-  grid-column: 1;
-  grid-row: 6 / 7;
+  grid-area: footerContainer;
 }
+
 .container {
   display: grid;
-  grid-template-columns: $container-grid-columns-desktop;
-  grid-template-rows: $container-grid-rows-desktop;
+  grid-template-areas: 
+    "navBarContainer"
+    "bodyContainer"
+    "footerContainer";
+  grid-template-rows: $navbar-height-desktop 1fr $footer-container-heigth;
+  grid-template-columns: 1fr;
   font-family: $theme-font;
   font-size: $font-default-size;
   // Shorthand for align-items and justify items.
@@ -54,3 +58,5 @@ h2 {
   font-family: $theme-font-sub;
   font-weight: 900;
 }
+
+

@@ -23,7 +23,9 @@
           </div>
         </tr>
       </tbody>
-      <tfoot></tfoot>
+      <tfoot>
+        <!-- Table Pagination -->
+      </tfoot>
     </table>
 </template>
 
@@ -42,10 +44,10 @@ export default {
     filter: String,
   },
   methods: {
-    editItem(rowItem) {
+    editItem() {
       // TODO modal edit
     },
-    deleteItem(rowItem) {
+    deleteItem() {
       // TODO modal delete
     },
   },
@@ -63,18 +65,19 @@ export default {
 
 <style lang="scss" scoped>
 table {
-  margin-top: 15px;
   position: relative;
+  top: 1rem;
+  min-width: 90vw;
+  min-height: 60vh;
+  margin-bottom: 17px;
 }
 
-
 thead {
-  top: 100px;
-  position: sticky;
   font-size: 24px;
   background-color: #ccc;
  tr {
    th {
+     margin-right: 150px;
      text-align: left;
      padding: 15px;
     }
