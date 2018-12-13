@@ -24,10 +24,10 @@ export default {
     onChange(event) {
       switch (event.target.value) {
         case 'users':
-          this.$store.dispatch('users/fetchUsers');
+          this.$store.dispatch(`${event.target.value}/fetchUsers`);
           break;
         case 'todos':
-          this.$store.dispatch('todos/fetchTodos');
+          this.$store.dispatch(`${event.target.value}/fetchTodos`);
           break;
         default:
           console.log('Unexpected shit');

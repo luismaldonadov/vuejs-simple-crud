@@ -10,6 +10,7 @@
 import { mapState } from 'vuex';
 import DataTable from '@/components/DataTable.vue';
 import DropDown from '@/components/DropDown.vue';
+import 'vue-awesome/icons/times-circle';
 
 export default {
   name: 'Search',

@@ -30,11 +30,17 @@ const actions = {
         }, { root: true });
       }).catch(error => console.error(error));
   },
+  deleteById({ commit }, id) {
+    commit('DELETE_TODO_BY_ID', id);
+  },
 };
 
 const mutations = {
   SET_ALL_TODOS(state, todos) {
     state.all = todos;
+  },
+  DELETE_TODO_BY_ID(state, id) {
+    state.all.splice(id - 1, 1);
   },
 };
 
