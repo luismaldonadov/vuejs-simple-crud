@@ -18,20 +18,14 @@ export default {
     DropDown,
   },
   created() {
-    this.$store.dispatch('Users/fetchUsers');
+    this.$store.dispatch('users/fetchUsers');
   },
   computed: mapState({
-    activeTable: state => state.Tables.activeTable,
-    activeColumns: state => state.Tables.activeColumns,
-    users: state => state.Users.all,
+    activeTable: state => state.tables.activeTable.data,
+    activeColumns: state => state.tables.activeTable.columnHeaders,
+    users: state => state.users.all,
   }),
   methods: {
-  },
-  watch: {
-    activeTable(newTable, oldTable) {
-      console.log(newTable);
-      console.log(oldTable);
-    },
   },
 };
 </script>

@@ -18,13 +18,16 @@ import { mapState } from 'vuex';
 export default {
   name: 'DropDown',
   computed: mapState({
-    selected: state => state.Tables.selected,
+    selected: state => state.tables.selected,
   }),
   methods: {
     onChange(event) {
       switch (event.target.value) {
         case 'users':
-          this.$store.dispatch('Users/fetchUsers');
+          this.$store.dispatch('users/fetchUsers');
+          break;
+        case 'todos':
+          this.$store.dispatch('todos/fetchTodos');
           break;
         default:
           console.log('Unexpected shit');

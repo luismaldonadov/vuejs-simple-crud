@@ -1,28 +1,38 @@
 const state = {
-  all: ['users', 'photos', 'albums', 'comments', 'posts', 'todos'],
-  activeTable: [],
-  activeColumns: [],
+  allTableNames: ['users', 'todos', 'photos', 'albums', 'comments', 'posts'],
+  activeTable: {
+    name: '',
+    columnHeaders: [],
+    data: [],
+  },
 };
 
 const getters = {
-  allTables: () => state.all,
-  selectedTable: () => state.selected,
+  allTableNames: () => state.allTableNames,
+  selectedTable: () => state.activeTable,
 };
 
 const actions = {
-  selectedTableColumns({ commit }, columns) {
-    commit('CHANGE_SELECTED_TABLE_COLUMNS', columns);
-  },
   selectedTable({ commit }, table) {
     commit('CHANGE_SELECTED_TABLE', table);
+  },
+  deleteTableRecord({ commit, dispatch }, id) {
+    // TODO delete table record
+    dispatch(`${state.activeTable.name}/deleteById`, id, { root: true });
+  },
+  /*
+  addTableRecord({ commit }, entry) {
+    // TODO add table record
+  },
+  */
+  updateTableRecord({ commit }, entry) {
+    // TODO update record
+    console.log(entry);
   },
 };
 
 
 const mutations = {
-  CHANGE_SELECTED_TABLE_COLUMNS(state, columns) {
-    state.activeColumns = columns;
-  },
   CHANGE_SELECTED_TABLE(state, table) {
     state.activeTable = table;
   },

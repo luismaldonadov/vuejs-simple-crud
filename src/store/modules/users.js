@@ -29,10 +29,16 @@ const actions = {
         commit('SET_ALL_USERS', condensedUserData);
         // Dispatch 2 actions to the tables state management. Set column headers
         // and data for the table.
-        dispatch('Tables/selectedTableColumns', state.tableColumns, { root: true });
-        dispatch('Tables/selectedTable', state.all, { root: true });
+        dispatch('tables/selectedTable', {
+          name: 'users',
+          columnHeaders: state.tableColumns,
+          data: state.all,
+        }, { root: true });
         // Pass through error from rejected promise
       }).catch(error => console.error(error));
+  },
+  deleteById({ commit }, userId) {
+    commit('DELETE_USER_BY_ID', userId);
   },
 };
 const mutations = {
@@ -40,6 +46,9 @@ const mutations = {
   SET_ALL_USERS(state, users) {
     // Mapped only the columns needed for the example
     state.all = users;
+  },
+  DELETE_USER_BY_ID(state, userId) {
+    state.all.splice(userId - 1, 1);
   },
 };
 

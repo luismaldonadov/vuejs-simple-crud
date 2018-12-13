@@ -13,7 +13,7 @@
           <td v-for="(columnName ,index) in columns" :key="index">
             {{ rowItem[columnName] }}
           </td>
-          <div class="row-buttons">
+            <div class="row-buttons">
             <span @click="editItem(rowItem)">
               <v-icon  class="edit" name="edit"></v-icon>
             </span>
@@ -44,11 +44,11 @@ export default {
     filter: String,
   },
   methods: {
-    editItem() {
-      // TODO modal edit
+    editItem(rowItem) {
+      this.$store.dispatch('tables/updateTableRecord', rowItem);
     },
-    deleteItem() {
-      // TODO modal delete
+    deleteItem(rowItem) {
+      this.$store.dispatch('tables/deleteTableRecord', rowItem.id);
     },
   },
   filters: {
