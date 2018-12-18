@@ -61,14 +61,15 @@ export default {
 <style lang="scss" scoped>
 .select-container {
   margin-top: 18px;
-  width: 90vw;
+  display: flex;
+  min-width: 90vw;
+  align-items: center;
+  justify-content: flex-start;
 }
 p {
-  display: inline-block;
   margin-right: 15px;
 }
 select {
-  display: inline-block;
   font-family: $theme-font;
   margin-right: 15px;
 }

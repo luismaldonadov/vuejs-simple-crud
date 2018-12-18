@@ -16,7 +16,6 @@ const actions = {
         }
         return Promise.reject(Error(`Response code ${response.status}`));
       }).then((data) => {
-        dispatch('tables/finishLoadingTable', {}, { root: true });
         const condensedTodoData = data.map(todo => ({
           id: todo.id,
           title: todo.title,
@@ -29,6 +28,7 @@ const actions = {
           columnHeaders: state.tableColumns,
           data: state.all,
         }, { root: true });
+        // dispatch('tables/finishLoadingTable', {}, { root: true });
       }).catch(error => console.error(error));
   },
   deleteById({ commit }, id) {

@@ -20,8 +20,9 @@ const actions = {
   finishLoadingTable({ commit }) {
     commit('FINISHED_LOADING');
   },
-  selectedTable({ commit }, table) {
+  selectedTable({ commit, dispatch }, table) {
     commit('CHANGE_SELECTED_TABLE', table);
+    dispatch('finishLoadingTable');
   },
   deleteTableRecord({ dispatch }, id) {
     // TODO delete table record

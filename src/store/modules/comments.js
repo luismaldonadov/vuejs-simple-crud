@@ -16,7 +16,6 @@ const actions = {
         }
         return Promise.reject(Error(`Response code ${response.status}`));
       }).then((data) => {
-        dispatch('tables/finishLoadingTable', {}, { root: true });
         const condensedData = data.map(entry => ({
           id: entry.id,
           name: entry.name,

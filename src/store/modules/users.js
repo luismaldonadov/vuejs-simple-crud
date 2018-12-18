@@ -17,7 +17,6 @@ const actions = {
         // Reject the promise on error from API
         return Promise.reject(Error(`Response Code ${response.status}`));
       }).then((data) => {
-        dispatch('tables/finishLoadingTable', {}, { root: true });
         // Start the data map based on response from API to meet our needs
         const condensedUserData = data.map(user => ({
           id: user.id,
@@ -35,6 +34,7 @@ const actions = {
           columnHeaders: state.tableColumns,
           data: state.all,
         }, { root: true });
+        // dispatch('tables/finishLoadingTable', {}, { root: true });
         // Pass through error from rejected promise
       }).catch(error => console.error(error));
   },
