@@ -9,16 +9,16 @@
 
       <ul class="navbar-icon-group">
         <router-link to="/" tag="li">
-          <v-icon name="home"/>
-          <div class="home-text">Home</div>
+          <div class="tooltip">
+            <v-icon name="home" />
+            <span class="tooltip-text">Go back to home</span>
+          </div>
         </router-link>
         <router-link to="/search" tag="li">
-          <v-icon name="search"/>
-          <div class="search-text">Search</div>
-        </router-link>
-        <router-link to="/edit" tag="li">
-          <v-icon name="edit"/>
-          <div class="edit-text">Edit</div>
+          <div class="tooltip" >
+            <v-icon name="search" />
+            <span class="tooltip-text">Search/edit entries</span>
+          </div>
         </router-link>
       </ul>
 
@@ -35,6 +35,11 @@ import 'vue-awesome/icons/search';
 export default {
   name: 'TheNavigationBar',
   components: {},
+  methods: {
+    showToolTip: function showToolTip(icon) {
+      console.log(icon);
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -51,6 +56,7 @@ export default {
   top: 0;
   margin-top: 0px;
   padding-top: 0px;
+  padding-right: 10px;
   position: sticky;
   // Shadow for the navbar
   box-shadow: 0px 5px 7px 5px #ccc;
@@ -83,10 +89,10 @@ export default {
 
 .navbar-icon-group {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-  min-width: 6rem;
-  max-width: 24rem;
+  min-width: 480px;
+  max-width: 960px;
 
   li {
     margin: 0px;
@@ -101,16 +107,39 @@ export default {
     .fa-icon {
       height: 32px;
       width: 32px;
+      text-align: center;
     }
-    div {
-      display: none;
-    }
-
       :hover {
         cursor: pointer;
         color: $complementary-color;
       }
   }
+}
+
+.tooltip:hover > .tooltip-text {
+  visibility: visible;
+}
+
+.tooltip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+}
+
+.tooltip > .tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  font-size: 12px;
+  background-color : white;
+  color: $main-color;;
+  text-align: center;
+  padding: 5px;
+}
+
+.tooltiptext {
+
 }
 
 </style>
