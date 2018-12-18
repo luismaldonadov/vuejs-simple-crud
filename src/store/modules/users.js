@@ -17,6 +17,7 @@ const actions = {
         // Reject the promise on error from API
         return Promise.reject(Error(`Response Code ${response.status}`));
       }).then((data) => {
+        dispatch('tables/finishLoadingTable', {}, { root: true });
         // Start the data map based on response from API to meet our needs
         const condensedUserData = data.map(user => ({
           id: user.id,
@@ -47,8 +48,10 @@ const mutations = {
     // Mapped only the columns needed for the example
     state.all = users;
   },
-  DELETE_USER_BY_ID(state, userId) {
-    state.all.splice(userId - 1, 1);
+  DELETE_USER_BY_ID(state, id) {
+    // Match the index of the array for the userId. Needed because splice mutates the array.
+    const matchIndex = state.all.findIndex(entry => entry.id === id);
+    state.all.splice(matchIndex, 1);
   },
 };
 

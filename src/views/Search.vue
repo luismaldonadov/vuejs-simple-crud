@@ -2,7 +2,7 @@
   <div class="data-container">
   <!-- Pass the props to the components from our Vuex Store -->
     <DropDown />
-    <DataTable :data="activeTable" :columns="activeColumns" />
+    <DataTable :tableData="activeTable" :columns="activeColumns" />
   </div>
 </template>
 
@@ -17,9 +17,6 @@ export default {
   components: {
     DataTable,
     DropDown,
-  },
-  created() {
-    this.$store.dispatch('users/fetchUsers');
   },
   computed: mapState({
     activeTable: state => state.tables.activeTable.data,

@@ -11,7 +11,6 @@ The basic idea from this project was (but not limited to) the basic understandin
 ## Roadmap
 * API data visualization component
 * API data edition component
-* PWA proper dev (Basic scaffolding for now)
 ## Project setup
 ```
 npm install

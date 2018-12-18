@@ -4,6 +4,7 @@ import MouseElement from './modules/mouseElement';
 import users from './modules/users';
 import todos from './modules/todos';
 import tables from './modules/tables';
+import comments from './modules/comments';
 
 Vue.use(Vuex);
 
@@ -13,5 +14,6 @@ export default new Vuex.Store({
     users,
     todos,
     tables,
+    comments,
   },
 });

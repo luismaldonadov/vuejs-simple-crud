@@ -1,10 +1,11 @@
 const state = {
-  allTableNames: ['users', 'todos', 'photos', 'albums', 'comments', 'posts'],
+  allTableNames: ['users', 'todos', 'comments'],
   activeTable: {
     name: '',
     columnHeaders: [],
     data: [],
   },
+  isLoading: false,
 };
 
 const getters = {
@@ -13,10 +14,16 @@ const getters = {
 };
 
 const actions = {
+  startLoadingTable({ commit }) {
+    commit('STARTED_LOADING');
+  },
+  finishLoadingTable({ commit }) {
+    commit('FINISHED_LOADING');
+  },
   selectedTable({ commit }, table) {
     commit('CHANGE_SELECTED_TABLE', table);
   },
-  deleteTableRecord({ commit, dispatch }, id) {
+  deleteTableRecord({ dispatch }, id) {
     // TODO delete table record
     dispatch(`${state.activeTable.name}/deleteById`, id, { root: true });
   },
@@ -25,9 +32,9 @@ const actions = {
     // TODO add table record
   },
   */
-  updateTableRecord({ commit }, entry) {
+  updateTableRecord({ dispatch }, entry) {
     // TODO update record
-    console.log(entry);
+    dispatch(`${state.activeTable.name}/updateEntry`, entry, { root: true });
   },
 };
 
@@ -35,6 +42,12 @@ const actions = {
 const mutations = {
   CHANGE_SELECTED_TABLE(state, table) {
     state.activeTable = table;
+  },
+  STARTED_LOADING(state) {
+    state.isLoading = true;
+  },
+  FINISHED_LOADING(state) {
+    state.isLoading = false;
   },
 };
 

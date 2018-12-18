@@ -16,6 +16,7 @@ const actions = {
         }
         return Promise.reject(Error(`Response code ${response.status}`));
       }).then((data) => {
+        dispatch('tables/finishLoadingTable', {}, { root: true });
         const condensedTodoData = data.map(todo => ({
           id: todo.id,
           title: todo.title,
@@ -40,7 +41,8 @@ const mutations = {
     state.all = todos;
   },
   DELETE_TODO_BY_ID(state, id) {
-    state.all.splice(id - 1, 1);
+    const matchIndex = state.all.findIndex(entry => entry.id === id);
+    state.all.splice(matchIndex, 1);
   },
 };
 
