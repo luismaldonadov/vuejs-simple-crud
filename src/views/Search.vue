@@ -33,6 +33,7 @@ export default {
   grid-area: bodyContainer;
   align-self: stretch;
   justify-self: center;
+  min-width: 90%;
 }
 
 .row-buttons {

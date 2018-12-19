@@ -56,7 +56,7 @@ export default {
   top: 0;
   margin-top: 0px;
   padding-top: 0px;
-  padding-right: 10px;
+  margin-right: 10px;
   position: sticky;
   // Shadow for the navbar
   box-shadow: 0px 5px 7px 5px #ccc;
@@ -74,10 +74,11 @@ export default {
 .navbar-headline {
   margin-left: 24px;
   min-width: 48rem;
+  align-self: center;
 
   strong {
     color: white;
-    font-size: 2em;
+    font-size: 1.5em;
     font-family: $theme-font-display;
 
     .fa-icon {
@@ -91,8 +92,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  min-width: 480px;
-  max-width: 960px;
+  min-width: 280px;
 
   li {
     margin: 0px;
@@ -121,14 +121,12 @@ export default {
 }
 
 .tooltip {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: block;
   z-index: 1001;
 }
 
 .tooltip > .tooltip-text {
+  position: relative;
   visibility: hidden;
   width: 120px;
   font-size: 12px;
@@ -136,8 +134,9 @@ export default {
   color: $main-color;;
   text-align: center;
   padding: 5px;
+  left: -60px;
+  bottom: -20px;
 }
-
 .tooltiptext {
 
 }

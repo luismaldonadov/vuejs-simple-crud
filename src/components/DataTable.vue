@@ -1,15 +1,17 @@
 <template>
   <div>
+    <!-- Loader spinner for table -->
     <div class="spinner-container" v-if="isLoading">
       <div class="spinner"></div>
     </div>
-
+    <!-- Modal translucid fulscreen backgroud -->
     <div @click="closeModal()"
       class="modal-background-fs"
       v-if="modalSettings.fullScreenBackground">
     </div>
+    <!-- Delete modal for row item -->
     <div class="modal-switch" v-if="modalSettings.showDeleteModal">
-      <div class="modal-container">
+      <div class="modal-container base">
         <div class="modal-heading">
           <span @click="closeModal()">
             <v-icon class="times-circle" name="times-circle"></v-icon>
@@ -17,10 +19,45 @@
         </div>
         <div class="modal-content">
           <span>Do you want to remove this item?</span>
-          <p>Id: {{ selectedRowItem.id }}</p>
-          <p v-html="itemDescriptor(selectedRowItem)"></p>
+          <p>Id: {{ rowItem.id }}</p>
+          <p v-html="itemDescriptor(rowItem)"></p>
           <div class="action-buttons">
             <button @click="deleteItem()">Accept</button>
+            <button @click="closeModal()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Add/Edit Modal for table item -->
+    <div class="modal-switch" v-if="modalSettings.showAddModal || modalSettings.showEditModal">
+      <div class="modal-container edit">
+        <div class="modal-heading">
+            <span @click="closeModal()">
+            <v-icon class="times-circle" name="times-circle"></v-icon>
+          </span>
+        </div>
+        <div class="modal-content">
+          <div>
+            <span v-if="modalSettings.showAddModal"> Add new item</span>
+            <span v-if="modalSettings.showEditModal">Edit item</span>
+            <form action="">
+              <label for="columnName" v-for="(columnName, index) in columns" :key="index">
+                {{ columnName | normalizeColumnName }}
+                <input v-if="columnName !== 'completed'"
+                  type="text"
+                  :name="columnName"
+                  v-model="rowItem[columns[index]]">
+                <select v-else-if="columnName === 'completed'"
+                  v-model="rowItem[columns[index]]">
+                  <option disabled value>Please select one</option>
+                  <option value="true">True</option>
+                  <option value="false">False</option>
+                </select>
+              </label>
+            </form>
+          </div>
+          <div class="action-buttons">
+            <button @click="saveItem(rowItem)">Save</button>
             <button @click="closeModal()">Cancel</button>
           </div>
         </div>
@@ -77,17 +114,25 @@ export default {
   data() {
     return {
       isTableVisible: false,
-      selectedRowItem: {},
+      rowItem: {},
       modalSettings: {
+        showAddModal: false,
         showEditModal: false,
         showDeleteModal: false,
         fullScreenBackground: false,
       },
     };
   },
-  computed: mapState({
-    isLoading: state => state.tables.isLoading,
-  }),
+  computed: {
+    rowItemLength: {
+      get() {
+        return Object.keys(this.rowItem).length;
+      },
+    },
+    ...mapState({
+      isLoading: state => state.tables.isLoading,
+    }),
+  },
   watch: {
     isLoading(newStatus) {
       if (newStatus === false) {
@@ -106,27 +151,42 @@ export default {
     },
   },
   methods: {
+    addModal() {
+      this.modalSettings.fullScreenBackground = true;
+      this.modalSettings.showAddModal = true;
+    },
     editModal(rowItem) {
-      this.selectedRowItem = rowItem;
+      this.rowItem = rowItem;
       this.modalSettings.fullScreenBackground = true;
       this.modalSettings.showEditModal = true;
     },
     deleteModal(rowItem) {
-      this.selectedRowItem = rowItem;
+      this.rowItem = rowItem;
       this.modalSettings.fullScreenBackground = true;
       this.modalSettings.showDeleteModal = true;
     },
     closeModal() {
-      this.selectedRowItem = {};
+      this.rowItem = {};
       this.modalSettings.showEditModal = false;
+      this.modalSettings.showAddModal = false;
       this.modalSettings.showDeleteModal = false;
       this.modalSettings.fullScreenBackground = false;
     },
-    updateItem() {
-      this.$store.dispatch('tables/updateTableRecord', this.selectedRowItem);
+    saveItem(rowItem) {
+      console.log(rowItem);
+      if (this.modalSettings.showEditModal) {
+        console.log('item edited and saved');
+        // this.$store.dispatch('tables/updateTableRecord', rowItem);
+      }
+      else {
+        console.log('new item edited and saved');
+        // this.$store.dispatch('tables/addTableRecord', rowItem);
+      }
+      
+      this.closeModal();
     },
     deleteItem() {
-      this.$store.dispatch('tables/deleteTableRecord', this.selectedRowItem.id);
+      this.$store.dispatch('tables/deleteTableRecord', this.rowItem.id);
       this.closeModal();
     },
     itemDescriptor(rowItem) {
@@ -195,9 +255,17 @@ export default {
   z-index: 9999;
 }
 
-.modal-container {
+.modal-container.base {
   width: 500px;
   height: 275px;
+}
+
+.modal-container.edit {
+  width: 700px;
+  height: 400px;
+}
+.modal-container {
+
   background-color: #fff;
   padding-bottom: 10px;
   span {

@@ -8,13 +8,12 @@
         <ul>
           <li>Vuex</li>
           <li>Vue-router</li>
-          <li>This will be a PWA</li>
           <li>Fake data, real API endpoint used: <a href="https://jsonplaceholder.typicode.com/">https://jsonplaceholder.typicode.com/</a></li>
-          <li>CSS Animations for some elements</li>
+          <li>CSS Transitions for some elements</li>
         </ul>
         <p>
           This a small project that i made in order to learn
-          to use Vue.js properly.
+          to use Vue.js along with CSS flexbox and grid properly.
           Basic create, read, update and delete operations
           from real REST API endpoints are included
       </p>
@@ -37,16 +36,11 @@ export default {
   grid-area: bodyContainer;
   // Values to set here as a child of the parent grid
   margin-top: 25px;
-   // width: $navbar-width-desktop;
-  // height: $body-container-height;
-  // place-self: center center;
-  // Nested grid
-  // display:grid;
+  min-width: 90%;
+  place-self : center center;
 }
 
 .home-body-content {
-  place-self : center center;
-
   h2 {
     text-align: center;
   }
