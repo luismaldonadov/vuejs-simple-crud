@@ -1,0 +1,43 @@
+$main-color: hsl(153, 64%, 40%);
+$secondary-color: hsl(178, 63%, 35%);
+$complementary-color: hsl(16, 87%, 58%);
+
+$heartred: hsl(0, 97%, 45%);
+
+$link: $main-color;
+$link-hover: $complementary-color;
+
+// Root grid column sizes
+$navbar-width-desktop: 90vw;
+$navbar-width-mobile: 100vw;
+
+// Root grid row sizes
+$navbar-height-desktop: 6rem;
+$footer-container-heigth: 6rem;
+
+// Grid sizes
+
+$container-grid-columns-desktop: 1fr;
+$container-grid-rows-desktop: 
+  "navBarContainer"
+  "bodyContainer"
+  "footerContainer";
+
+// Icon sizes
+
+// Breakpoints
+
+//Font properties
+
+// Import a Google font
+@import url('https://fonts.googleapis.com/css?family=Lora|Noto+Sans|Exo');
+$theme-font-display: 'Exo', sans-serif;
+$theme-font-sub: 'Lora', serif;
+$theme-font: 'Noto Sans', sans-serif;
+$font-default-size: 18px;
+$font-h1-size: 3em;
+$font-h2-size: 2.5em;
+$font-h3-size: 1.7em;
+$font-nav-icons: 1.1em;
+  // header 1,2,3
+  //

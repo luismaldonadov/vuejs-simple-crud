@@ -1,29 +1,46 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id="app" class="container">
+    <!-- My injected custom navigation bar -->
+    <TheNavigationBar />
+    <!-- Page transition implementation -->
+    <transition name="switch">
+      <!-- All the router views get injected here -->
+      <router-view />
+    </transition>
+    <!--
+    <TheFooter class="footer" />
+    -->
   </div>
 </template>
 
+<script>
+// @ is an alias to /src
+import TheNavigationBar from '@/components/TheNavigationBar.vue';
+
+export default {
+  data() {
+    return {};
+  },
+  components: {
+    TheNavigationBar,
+  },
+  methods: {
+    // Done callback needed for animation, as needed for JS only transitions.
+    /*
+    enter(element, done) {},
+    leave(element, done) {},
+    */
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.switch-enter-active, .switch-leave-active {
+  transition: opacity 0.5s;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+
+.switch-enter, .switch-leave-to {
+  opacity: 0;
 }
+
 </style>

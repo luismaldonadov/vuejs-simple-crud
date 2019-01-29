@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+/* Custom styling in this file*/
+@import "theme-variables";
+
+// @import '../../../node_modules/reset-css/sass/reset';
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+html,body {
+  width:100%;
+  height:100%;
+  margin:0;
+}
+
+.footer {
+  grid-area: footerContainer;
+}
+
+.container {
+  display: grid;
+  grid-template-areas: 
+    "navBarContainer"
+    "bodyContainer"
+    "footerContainer";
+  grid-template-rows: $navbar-height-desktop 1fr $footer-container-heigth;
+  grid-template-columns: 1fr;
+  font-family: $theme-font;
+  font-size: $font-default-size;
+  // Shorthand for align-items and justify items.
+  // place-items: center center;
+  // Shorthand for align-content and justify-content
+  // place-content
+}
+
+$icon-sizes: (
+    1: 12px,
+    2: 18px,
+    3: 24px,
+    4: 36px,
+    5: 48px,
+);
+
+h1 {
+  font-size: $font-h1-size;
+  font-family: $theme-font-display;
+}
+h2 {
+  font-size: $font-h2-size;
+  font-family: $theme-font-sub;
+  font-weight: 900;
+}
+
+
