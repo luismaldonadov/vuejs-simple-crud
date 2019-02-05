@@ -9,8 +9,7 @@ The basic idea from this project was (but not limited to) the basic understandin
 ## Currently working on
 * Universal datatable vue component, will be ported as a npm pacakge later.
 ## Roadmap
-* API data visualization component
-* API data edition component
+Build to github pages
 ## Project setup
 ```
 npm install
